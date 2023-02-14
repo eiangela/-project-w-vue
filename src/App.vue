@@ -1,13 +1,13 @@
 <template>
   <div class="corpo">
     <h1 class="centralizado"> {{ titulo }} </h1>
-    <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="filtre por parte do titulo">
+    <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="filtre por parte do titulo">
   
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto in fotosComFiltro">
 
           <meu-painel :titulo="foto.titulo">
-            <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo" :title="foto.titulo">
+            <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
           </meu-painel>
     
       </li>
@@ -21,11 +21,12 @@
 
 <script>
 import Painel from './componentes/shared/painel/Painel.vue';
-
+import imagemResponsiva from './componentes/shared/imagem-responsiva/imagemResponsiva.vue';
 export default {
 
   components: {
-    'meu-painel': Painel
+    'meu-painel': Painel,
+    'imagem-responsiva': imagemResponsiva
   },
 
   data() {
@@ -90,9 +91,7 @@ export default {
   display: inline-block;
 }
 
-.imagem-responsiva {
-  width: 100%;
-}
+
 
 .filtro {
   display: block;

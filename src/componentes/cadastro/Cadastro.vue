@@ -20,5 +20,4 @@
 .centralizado {
     text-align: center;
 }
-
 </style>
